@@ -6,7 +6,9 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import PrivateRoute from "./components/common/PrivateRoute";
+
 import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 import Enter from "./components/layout/Enter";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
@@ -50,6 +52,7 @@ function App() {
           </div>
         </div>
       </Router>
+      <Footer />
     </Provider>
   );
 }

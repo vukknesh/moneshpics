@@ -12,89 +12,24 @@ const ProfileSchema = new Schema({
     required: true,
     max: 40
   },
-  company: {
+  imageURL: {
     type: String
   },
-  website: {
-    type: String
-  },
-  location: {
-    type: String
-  },
-  status: {
-    type: String,
-    required: true
-  },
-  skills: {
-    type: [String],
-    required: true
-  },
-  bio: {
-    type: String
-  },
-  githubusername: {
-    type: String
-  },
-  experience: [
-    {
-      title: {
-        type: String,
-        required: true
-      },
-      company: {
-        type: String,
-        required: true
-      },
-      location: {
-        type: String
-      },
-      from: {
-        type: Date,
-        required: true
-      },
-      to: {
-        type: Date
-      },
-      current: {
-        type: Boolean,
-        default: false
-      },
-      description: {
-        type: String
-      }
-    }
-  ],
 
-  education: [
-    {
-      school: {
-        type: String,
-        required: true
-      },
-      degree: {
-        type: String,
-        required: true
-      },
-      fieldofstudy: {
-        type: String,
-        required: true
-      },
-      from: {
-        type: Date,
-        required: true
-      },
-      to: {
-        type: Date
-      },
-      current: {
-        type: Boolean,
-        default: false
-      },
-      description: {
-        type: String
-      }
-    }
-  ],
+  city: {
+    type: String
+  },
+  country: {
+    type: String
+  },
+
+  aboutMe: {
+    type: String
+  },
+  donation: {
+    type: String
+  },
+
   social: {
     youtube: {
       type: String
@@ -108,7 +43,7 @@ const ProfileSchema = new Schema({
     instagram: {
       type: String
     },
-    linkedin: {
+    website: {
       type: String
     }
   },

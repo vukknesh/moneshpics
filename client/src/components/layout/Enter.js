@@ -17,7 +17,7 @@ export default class Enter extends Component {
                 <i class="fas fa-search" />
               </button>
             </form>
-            <p className="text-light pt-5">
+            <p className="text-light text-center pt-5">
               Monesh pics is the best photo free website in the worl Lorem ipsum
               dolor sit amet consectetur adipisicing elit. Quibusdam commodi
               doloribus atque fugit velit repudiandae temporibus neque molestiae

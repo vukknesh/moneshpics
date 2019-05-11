@@ -1,25 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { logoutUser } from "../../actions/authActions";
+import { clearCurrentProfile } from "../../actions/profileActions";
 import "../main.css";
 
-export default class Navbar extends Component {
+class Navbar extends Component {
   onLogoutClick(event) {
     event.preventDefault();
-    console.log("a");
+    this.props.clearCurrentProfile();
+    this.props.logoutUser();
   }
   render() {
+    const { isAuthenticated, user } = this.props.auth;
     const authLinks = (
       <ul class="navbar-nav ml-auto ">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
-            Home <span class="sr-only">(current)</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            Link
-          </a>
-        </li>
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
@@ -30,40 +26,66 @@ export default class Navbar extends Component {
             aria-haspopup="true"
             aria-expanded="false"
           >
-            Dropdown
+            Explore
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">
-              Action
+              Photos
             </a>
             <a class="dropdown-item" href="#">
-              Another action
+              Videos
+            </a>
+            <a class="dropdown-item" href="#">
+              Photographers
             </a>
             <div class="dropdown-divider" />
             <a class="dropdown-item" href="#">
-              Something else here
+              Popular Images
             </a>
           </div>
         </li>
-        <li class="nav-item">
+        <li class="nav-item dropdown">
           <a
-            class="nav-link disabled"
+            class="nav-link dropdown-toggle dropdown-toggle1"
             href="#"
-            tabindex="-1"
-            aria-disabled="true"
+            id="navbarDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
           >
-            Disabled
+            <img
+              src="https://www.talaka.org/assets/img/userpic-fallback.svg"
+              style={{ borderRadius: "50%", width: "30px", height: "30px" }}
+              alt=""
+            />
           </a>
-        </li>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">
+              My Images
+            </a>
+            <a class="dropdown-item" href="#">
+              Upload
+            </a>
+            <a class="dropdown-item" href="#">
+              Favorites
+            </a>
+            <a class="dropdown-item" href="#">
+              Messages
+            </a>
+            <a class="dropdown-item" href="#">
+              My Profile
+            </a>
+            <div class="dropdown-divider" />
 
-        <li className="nav-item ">
-          <a
-            href="#"
-            onClick={this.onLogoutClick.bind(this)}
-            className="nav-link text-light"
-          >
-            LOGOUT
-          </a>
+            <a
+              href="#"
+              onClick={this.onLogoutClick.bind(this)}
+              className="dropdown-item"
+            >
+              LOGOUT
+            </a>
+          </div>
         </li>
       </ul>
     );
@@ -87,7 +109,7 @@ export default class Navbar extends Component {
         style={{ background: "rgba(3, 3, 3, 0.75)" }}
         class="navbar navbar-expand-lg navbar-dark pl-5 pr-5"
       >
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand ml-5 pl-5" href="/">
           Monesh Pics
         </a>
 
@@ -103,10 +125,26 @@ export default class Navbar extends Component {
           <span class="navbar-toggler-icon" />
         </button>
 
-        <div class="collapse navbar-collapse " id="navbarSupportedContent">
-          {guestLinks}
+        <div
+          class="collapse navbar-collapse mr-5 pr-5"
+          id="navbarSupportedContent"
+        >
+          {isAuthenticated ? authLinks : guestLinks}
         </div>
       </nav>
     );
   }
 }
+
+Navbar.propTypes = {
+  logoutUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired
+};
+
+const mapStateToProps = state => ({
+  auth: state.auth
+});
+export default connect(
+  mapStateToProps,
+  { logoutUser, clearCurrentProfile }
+)(Navbar);
