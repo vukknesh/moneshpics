@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-import TextFieldGroup from "../common/TextFieldGroup";
+
 import { connect } from "react-redux";
+import { registerUser } from "../../actions/authActions";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 class Register extends Component {
   constructor(props) {
@@ -19,15 +21,15 @@ class Register extends Component {
   }
 
   componentDidMount() {
-    // if (this.props.auth.isAuthenticated) {
-    //   this.props.history.push("/dashboard");
-    // }
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push("/");
+    }
   }
 
   componentWillReceiveProps(nextProps) {
-    // if (nextProps.errors) {
-    //   this.setState({ errors: nextProps.errors });
-    // }
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors });
+    }
   }
 
   onChange = event => {
@@ -53,7 +55,7 @@ class Register extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">
-                Create your Monesh Pics account
+                Create your BirdWatcher account
               </p>
               <form noValidate onSubmit={this.onSubmit}>
                 <TextFieldGroup
@@ -88,7 +90,10 @@ class Register extends Component {
                   type="password"
                 />
 
-                <input type="submit" className="btn btn-info btn-block mt-4" />
+                <input
+                  type="submit"
+                  className="btn btn-primary btn-block mt-4"
+                />
               </form>
             </div>
           </div>
@@ -108,4 +113,7 @@ const mapStateToProps = state => ({
   auth: state.auth,
   errors: state.errors
 });
-export default Register;
+export default connect(
+  mapStateToProps,
+  { registerUser }
+)(withRouter(Register));
