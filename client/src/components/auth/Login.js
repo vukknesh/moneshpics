@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-
+import TextFieldGroup from "../common/TextFieldGroup";
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -50,10 +50,10 @@ class Login extends Component {
             <div className="col-md-8  m-auto  ">
               <h1 className="display-4 text-center">Log In</h1>
               <p className="lead text-center">
-                Sign in to your BirdWatcher account
+                Sign in to your Monesh Pics account
               </p>
               <form onSubmit={this.onSubmit}>
-                <input
+                <TextFieldGroup
                   placeholder="email"
                   name="email"
                   type="email"
@@ -61,7 +61,7 @@ class Login extends Component {
                   onChange={this.onChange}
                   error={errors.email}
                 />
-                <input
+                <TextFieldGroup
                   placeholder="password"
                   name="password"
                   type="password"
@@ -70,10 +70,7 @@ class Login extends Component {
                   error={errors.password}
                 />
 
-                <input
-                  type="submit"
-                  className="btn btn-primary btn-block mt-4"
-                />
+                <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
           </div>

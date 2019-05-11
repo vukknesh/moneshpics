@@ -10,7 +10,7 @@ export default class Enter extends Component {
             <form className="search-photo" action="submit">
               <input
                 type="text"
-                class="display-4"
+                className="display-4"
                 placeholder="Find your perfect photo ..."
               />
               <button type="submit">

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
-
+import TextFieldGroup from "../common/TextFieldGroup";
 import { connect } from "react-redux";
 
 class Register extends Component {
@@ -53,17 +53,17 @@ class Register extends Component {
             <div className="col-md-8 m-auto">
               <h1 className="display-4 text-center">Sign Up</h1>
               <p className="lead text-center">
-                Create your BirdWatcher account
+                Create your Monesh Pics account
               </p>
               <form noValidate onSubmit={this.onSubmit}>
-                <input
+                <TextFieldGroup
                   placeholder="Name"
                   name="name"
                   value={this.state.name}
                   onChange={this.onChange}
                   error={errors.name}
                 />
-                <input
+                <TextFieldGroup
                   placeholder="Email"
                   type="email"
                   name="email"
@@ -71,7 +71,7 @@ class Register extends Component {
                   onChange={this.onChange}
                   error={errors.email}
                 />
-                <input
+                <TextFieldGroup
                   placeholder="Password"
                   name="password"
                   value={this.state.password}
@@ -79,7 +79,7 @@ class Register extends Component {
                   error={errors.password}
                   type="password"
                 />
-                <input
+                <TextFieldGroup
                   placeholder="Confirm password"
                   name="password2"
                   value={this.state.password2}
@@ -88,10 +88,7 @@ class Register extends Component {
                   type="password"
                 />
 
-                <input
-                  type="submit"
-                  className="btn btn-primary btn-block mt-4"
-                />
+                <input type="submit" className="btn btn-info btn-block mt-4" />
               </form>
             </div>
           </div>
