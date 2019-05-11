@@ -1,0 +1,45 @@
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.nav-link:hover {
+  color: #5bc0de !important;
+}
+
+.dropdown-item:hover {
+  color: #5bc0de !important;
+}
+
+.search-photo {
+  height: 70px;
+  margin-top: 75px;
+}
+
+.search-photo input {
+  border: 0;
+  background: white;
+  height: 70px;
+  padding: 0 20px;
+  font-size: 18px;
+  width: 50%;
+  color: #333;
+  font-weight: bold;
+}
+
+.search-photo button {
+  width: 70px;
+  height: 70px;
+  background: #5bc0de;
+  color: white;
+}
+
+.search-photo button:hover {
+  color: black;
+  background: #59d8ff;
+}
+
+.jumbotron {
+  min-height: 50vh;
+  background: rgba(27, 167, 162, 0.67);
+}
+/*# sourceMappingURL=main.css.map */
