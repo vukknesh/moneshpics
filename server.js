@@ -33,10 +33,13 @@ app.use(passport.initialize());
 require("./config/passport")(passport);
 
 // Use Routes
+let router = require("./routes/api/upload.router.js");
 
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
+
+app.use("/api/file", router);
 
 const PORT = process.env.PORT || 5000;
 
