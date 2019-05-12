@@ -70,12 +70,12 @@ class Navbar extends Component {
             <a class="dropdown-item" href="#">
               Favorites
             </a>
-            <a class="dropdown-item" href="#">
+            <Link class="dropdown-item" to="/edit-profile">
               Messages
-            </a>
-            <a class="dropdown-item" href="#">
+            </Link>
+            <Link class="dropdown-item" to="/create-profile">
               My Profile
-            </a>
+            </Link>
             <div class="dropdown-divider" />
 
             <a

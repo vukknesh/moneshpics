@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
+import { clearCurrentProfile } from "./actions/profileActions";
 import store from "./store";
 import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
@@ -12,7 +13,9 @@ import Footer from "./components/layout/Footer";
 import Enter from "./components/layout/Enter";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import { clearCurrentProfile } from "./actions/profileActions";
+
+import EditProfile from "./components/profile/EditProfile";
+
 import ImageContainer from "./components/images/ImageContainer";
 
 //check for token
@@ -49,6 +52,8 @@ function App() {
           <div>
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
+
+            <Route exact path="/edit-profile" component={EditProfile} />
           </div>
         </div>
       </Router>
