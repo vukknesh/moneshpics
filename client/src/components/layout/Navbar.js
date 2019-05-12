@@ -64,12 +64,12 @@ class Navbar extends Component {
             <a class="dropdown-item" href="#">
               My Images
             </a>
-            <a class="dropdown-item" href="#">
+            <Link class="dropdown-item" to="/upload-file">
               Upload
-            </a>
-            <a class="dropdown-item" href="#">
+            </Link>
+            <Link class="dropdown-item" to="/edit-profile">
               Favorites
-            </a>
+            </Link>
             <Link class="dropdown-item" to="/edit-profile">
               Messages
             </Link>

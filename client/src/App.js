@@ -14,9 +14,15 @@ import Enter from "./components/layout/Enter";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 
+import UploadFile from "./components/common/UploadFile";
+
 import EditProfile from "./components/profile/EditProfile";
 
-import ImageContainer from "./components/images/ImageContainer";
+import Profiles from "./components/profiles/Profiles";
+import Profile from "./components/profile/Profile";
+import NotFound from "./components/not-found/NotFound";
+import Post from "./components/posts/Post";
+import Post1 from "./components/Post/Post";
 
 //check for token
 if (localStorage.jwtToken) {
@@ -54,6 +60,34 @@ function App() {
             <Route exact path="/login" component={Login} />
 
             <Route exact path="/edit-profile" component={EditProfile} />
+            <Route exact path="/upload-file" component={UploadFile} />
+            <Route exact path="/profiles" component={Profiles} />
+            <Route exact path="/profile/:handle" component={Profile} />
+            {/* <Switch>
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch> */}
+            {/* <Switch>
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
+            </Switch> */}
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/edit-profile"
+                component={EditProfile}
+              />
+            </Switch>
+
+            <Switch>
+              <PrivateRoute exact path="/feed" component={Post} />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/post/:id" component={Post1} />
+            </Switch>
+            <Route exact path="/not-found" component={NotFound} />
           </div>
         </div>
       </Router>
