@@ -6,6 +6,8 @@ const jwt = require("jsonwebtoken");
 const keys = require("../../config/keys");
 const passport = require("passport");
 
+const { normalizeErrors } = require("../../helpers/mongoose");
+
 //Load input validation
 
 const validateRegisterInput = require("../../validation/register");

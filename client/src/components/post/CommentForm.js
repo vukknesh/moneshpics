@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from "./node_modules/react";
+import { connect } from "./node_modules/react-redux";
+import PropTypes from "./node_modules/prop-types";
 import TextAreaFieldGroup from "../common/TextAreaFieldGroup";
 import { addComment } from "../../actions/postActions";
 

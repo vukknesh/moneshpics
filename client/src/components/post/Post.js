@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from "./node_modules/react";
+import { connect } from "./node_modules/react-redux";
+import PropTypes from "./node_modules/prop-types";
 import PostItem from "../posts/PostItem";
-import CommentForm from "../Post/CommentForm";
+import CommentForm from "./CommentForm";
 import Spinner from "../common/Spinner";
 import { getPost } from "../../actions/postActions";
-import { Link } from "react-router-dom";
+import { Link } from "./node_modules/react-router-dom";
 import CommentFeed from "./CommentFeed";
 
 class Post extends Component {
