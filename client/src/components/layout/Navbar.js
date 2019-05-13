@@ -35,9 +35,9 @@ class Navbar extends Component {
             <a class="dropdown-item" href="#">
               Videos
             </a>
-            <a class="dropdown-item" href="#">
+            <Link class="dropdown-item" to="/profiles">
               Photographers
-            </a>
+            </Link>
             <div class="dropdown-divider" />
             <a class="dropdown-item" href="#">
               Popular Images
@@ -70,7 +70,7 @@ class Navbar extends Component {
             <Link class="dropdown-item" to="/edit-profile">
               Favorites
             </Link>
-            <Link class="dropdown-item" to="/edit-profile">
+            <Link class="dropdown-item" to="/feed">
               Messages
             </Link>
             <Link class="dropdown-item" to="/create-profile">

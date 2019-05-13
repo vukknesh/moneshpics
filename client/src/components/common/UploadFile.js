@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import isEmpty from "../../validation/is-empty";
+import { addImage, getImages } from "../../actions/imageActions";
+import { connect } from "react-redux";
+import { Redirect, withRouter } from "react-router-dom";
+
 class UploadFile extends Component {
   state = {
     image: null
@@ -10,16 +14,12 @@ class UploadFile extends Component {
     });
   };
   componentDidMount() {
-    // this.props.getCurrentProfile(this.props.user.id);
+    this.props.getImages();
   }
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.hotel) {
-      const hotel = nextProps.hotel;
-
-      hotel.image = !isEmpty(hotel.image) ? hotel.image : false;
-
+  componentWillReceiveProps(newProps) {
+    if (newProps.errors) {
       this.setState({
-        image: hotel.image
+        errors: newProps.errors
       });
     }
   }
@@ -32,10 +32,7 @@ class UploadFile extends Component {
       fd.append("image", this.state.image, this.state.image.name);
     }
 
-    // let id = this.props.match.params.id;
-    // let token = this.props.token;
-    // this.props.updateHotel(fd, id, token, this.props.history);
-    console.log("hello");
+    this.props.addImage(fd, this.props.history);
   };
   render() {
     return (
@@ -43,7 +40,7 @@ class UploadFile extends Component {
         <h1 className="text-center mb-5">Upload An Image</h1>
 
         <form onSubmit={this.onSubmit}>
-          <input type="file" name="image1" onChange={this.image1Change} />
+          <input type="file" name="image" onChange={this.image1Change} />
           <br />
           <input type="submit" className="btn btn-block btn-info mb-5 mt-3" />
         </form>
@@ -51,4 +48,11 @@ class UploadFile extends Component {
     );
   }
 }
-export default UploadFile;
+const mapStateToProps = state => ({
+  errors: state.errors,
+  auth: state.auth
+});
+export default connect(
+  mapStateToProps,
+  { addImage, getImages }
+)(withRouter(UploadFile));

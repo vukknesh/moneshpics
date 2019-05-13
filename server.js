@@ -5,11 +5,14 @@ const passport = require("passport");
 const users = require("./routes/api/users");
 const posts = require("./routes/api/posts");
 const profile = require("./routes/api/profile");
+const image = require("./routes/api/image");
+
+const cors = require("cors");
 
 const imageUploadRoutes = require("./routes/api/image-upload");
 
 const app = express();
-
+app.use(cors());
 //body-parser
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,6 +43,7 @@ let router = require("./routes/api/upload.router.js");
 app.use("/api/users", users);
 app.use("/api/profile", profile);
 app.use("/api/posts", posts);
+app.use("/api/image", image);
 
 app.use("/api/file", router);
 app.use("/api/v1", imageUploadRoutes);

@@ -7,7 +7,7 @@ import jwt_decode from "jwt-decode";
 import setAuthToken from "./utils/setAuthToken";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import PrivateRoute from "./components/common/PrivateRoute";
-
+import LoadingBar from "react-redux-loading-bar";
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 import Enter from "./components/layout/Enter";
@@ -35,15 +35,15 @@ if (localStorage.jwtToken) {
 
   //check for expired token
 
-  const currentTime = Date.now() / 1000;
-  if (decoded.exp < currentTime) {
-    //logout user
-    store.dispatch(logoutUser);
-    //clear current profile
-    store.dispatch(clearCurrentProfile);
-    //redirect to login
-    window.location.href = "/login";
-  }
+  // const currentTime = Date.now() / 1000;
+  // if (decoded.exp < currentTime) {
+  //   //logout user
+  //   store.dispatch(logoutUser);
+  //   //clear current profile
+  //   store.dispatch(clearCurrentProfile);
+  //   //redirect to login
+  //   window.location.href = "/";
+  // }
 }
 
 function App() {
@@ -52,33 +52,27 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
-
-          <Route exact path="/" component={Enter} />
-
+          <LoadingBar style={{ backgroundColor: "red", height: "4px" }} />
           <div>
+            <Route exact path="/" component={Enter} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/login" component={Login} />
 
-            <Route exact path="/edit-profile" component={EditProfile} />
-            <Route exact path="/upload-file" component={UploadFile} />
             <Route exact path="/profiles" component={Profiles} />
             <Route exact path="/profile/:handle" component={Profile} />
             {/* <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch> */}
-            {/* <Switch>
-              <PrivateRoute
-                exact
-                path="/create-profile"
-                component={CreateProfile}
-              />
-            </Switch> */}
+
             <Switch>
               <PrivateRoute
                 exact
                 path="/edit-profile"
                 component={EditProfile}
               />
+            </Switch>
+            <Switch>
+              <PrivateRoute exact path="/upload-file" component={UploadFile} />
             </Switch>
 
             <Switch>
