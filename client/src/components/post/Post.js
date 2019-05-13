@@ -28,7 +28,7 @@ class Post extends Component {
     }
     return (
       <div className="post">
-        <div className="container">
+        <div className="container mt-5">
           <div className="row">
             <div className="col-md-12">
               <Link to="/feed" className="btn btn-ligth mb-3">

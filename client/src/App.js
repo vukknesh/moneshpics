@@ -52,7 +52,7 @@ function App() {
       <Router>
         <div className="App">
           <Navbar />
-          <LoadingBar style={{ backgroundColor: "red", height: "4px" }} />
+          <LoadingBar style={{ backgroundColor: "blue", height: "4px" }} />
           <div>
             <Route exact path="/" component={Enter} />
             <Route exact path="/register" component={Register} />
