@@ -75,11 +75,13 @@ router.post(
       //if any errors send 400 with errors object
       return res.status(400).json(errors);
     }
+    console.log(req.user);
     const newImage = new Image({
       text: req.body.text,
       imageUrl: req.body.imageUrl,
 
-      user: req.user.id
+      user: req.user,
+      name: req.user.name
     });
     newImage.save().then(image => res.json(image));
   }

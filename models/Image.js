@@ -13,6 +13,9 @@ const ImageSchema = new Schema({
   text: {
     type: String
   },
+  name: {
+    type: String
+  },
 
   likes: [
     {

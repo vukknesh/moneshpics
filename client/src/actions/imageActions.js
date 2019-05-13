@@ -32,7 +32,7 @@ export const addImage = (image, history) => dispatch => {
         .then(dispatch(hideLoading()))
 
         .then(res => {
-          history.push("/profiles");
+          history.push("/");
           dispatch({
             type: ADD_IMAGE,
             payload: res.data
